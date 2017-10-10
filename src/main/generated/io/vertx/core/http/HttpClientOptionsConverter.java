@@ -104,8 +104,23 @@ import io.vertx.core.json.JsonArray;
     if (json.getValue("tryUseCompression") instanceof Boolean) {
       obj.setTryUseCompression((Boolean)json.getValue("tryUseCompression"));
     }
+    if (json.getValue("tryUsePerFrameWebsocketCompression") instanceof Boolean) {
+      obj.setTryUsePerFrameWebsocketCompression((Boolean)json.getValue("tryUsePerFrameWebsocketCompression"));
+    }
+    if (json.getValue("tryUsePerMessageWebsocketCompression") instanceof Boolean) {
+      obj.setTryUsePerMessageWebsocketCompression((Boolean)json.getValue("tryUsePerMessageWebsocketCompression"));
+    }
     if (json.getValue("verifyHost") instanceof Boolean) {
       obj.setVerifyHost((Boolean)json.getValue("verifyHost"));
+    }
+    if (json.getValue("websocketCompressionAllowClientNoContext") instanceof Boolean) {
+      obj.setWebsocketCompressionAllowClientNoContext((Boolean)json.getValue("websocketCompressionAllowClientNoContext"));
+    }
+    if (json.getValue("websocketCompressionLevel") instanceof Number) {
+      obj.setWebsocketCompressionLevel(((Number)json.getValue("websocketCompressionLevel")).intValue());
+    }
+    if (json.getValue("websocketCompressionRequestServerNoContext") instanceof Boolean) {
+      obj.setWebsocketCompressionRequestServerNoContext((Boolean)json.getValue("websocketCompressionRequestServerNoContext"));
     }
   }
 
@@ -145,5 +160,7 @@ import io.vertx.core.json.JsonArray;
     json.put("sendUnmaskedFrames", obj.isSendUnmaskedFrames());
     json.put("tryUseCompression", obj.isTryUseCompression());
     json.put("verifyHost", obj.isVerifyHost());
+    json.put("websocketCompressionAllowClientNoContext", obj.getWebsocketCompressionAllowClientNoContext());
+    json.put("websocketCompressionRequestServerNoContext", obj.getWebsocketCompressionRequestServerNoContext());
   }
 }
